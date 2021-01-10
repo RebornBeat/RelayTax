@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'userLR/login_style.css'%}">
+<title>Relay Tax - Portal</title>
+</head>
+<body>
+	<div id="navbar">
+		<div id="navbar_text">
+			<span id="active">Home</span>
+			<span>Services</span>
+			<span>About Us</span>
+			<a href="#">Portal</a>
+		</div>
+	</div>	
+	<div id="alert_container">
+		<span id="alert_message"> Alert </span>
+	</div>
+	<div id="login_container">
+		<h3>Login</h3>
+		<form id="myForm">
+			<br>
+			<label for="email"></label><br>
+			<input type="email" id="email" name="email" placeholder="E-mail" required><br>
+			<label for="password"></label><br>
+			<input type="password" id="password" name="password" placeholder="Password" required><br> 
+			<div id="show_container">
+				<span id="create">Forgot Password?</span>
+				<div id="pass_container">
+					<input type="checkbox" id="checkBox">
+					<span id="show_pass">Show Password</span>
+				</div>
+			</div>
+			<br>
+			<button type="button" id="register">Register</button>
+			<button type="submit">Enter</button>
+		</form>
+	</div>	
+<script src="{% static 'userLR/login.js'%}"></script>
+</body>
+</html>

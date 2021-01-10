@@ -1,0 +1,425 @@
+<html>
+<head>
+{% load static %}
+{% load app_extras %}
+<link rel="stylesheet" href="{% static 'userLR/portal_style.css'%}">
+<title>Relay Tax - Portal</title>
+</head>
+<body>
+	<div id="required_imports">
+		{% if context.Question %}
+			<div id="questions_import">
+				<div id="dependants_import">{{ context.Question.financial_support|nested_value:'Response' }}</div>
+				{% for i in context.Question.financial_support|nested_value:'Entries' %}
+					<div id="dependants_import_value">{{ i|int_value }}</div>
+				{% endfor %}
+				{% for i in context.Question.medical_dental|nested_value:'Entries' %}
+					<div class={{ i|string_value }} id="dental_import_value">{{ i|int_value }}</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+		{% if context.Personal %}
+			<div id="personal_import">
+			</div>
+		{% endif %}
+		{% if context.Upload %}
+			<div id="upload_import">
+			</div>
+		{% endif %}
+    </div>
+	<div id="bg_wrapper">
+    </div>
+	<div id="navbar">
+		<div id="navbar_text">
+			<a href="http://127.0.0.1:8000/">Home</a>
+			<a href="services/">Services</a>
+			<a href="about-us/">About Us</a>
+			<img src="{% static 'userLR/profile.png'%}">
+			<span>{{ request.user }}</span>
+		</div>
+	</div>
+	<div id="refund_container">
+		<div class="refund_wrapper" id="state_refund_container">
+			<h1>State</h1>
+			<h1>$0</h1>
+		</div>
+		<div class="refund_wrapper" id="federal_refund_container">
+			<h1>Federal</h1>
+			<h1>$0</h1>
+		</div>
+    </div>
+	<div id="refund_dates_container">
+		<div id="refund_dates_wrapper">
+			<div class="date_wrapper" id="2018_container">
+				<span>2018</span><span>2018</span>
+			</div>
+			<div class="date_wrapper" id="2019_container">
+				<span>2019</span><span>2019</span>
+			</div>
+			<div class="date_wrapper" id="2020_container">
+				<span>2020</span>
+			</div>
+		</div>
+    </div>
+	<div id="form_container">
+		<div class="form_overall_wrapper" id="step_1">
+			{% if context.Question %}
+				<span class="form_header">1. Tell Us About Yourself.</span> <span class="form_header status completed">(Completed)</span>
+			<div class="form_wrapper" id="question_container">
+				<div class="display">
+					<span class="inner_display completed">Completed</span>
+				</div>
+			</div>			
+			{% else %}
+				<span class="form_header">1. Tell Us About Yourself.</span> <span class="form_header status">(Pending)</span>
+			<div class="form_wrapper" id="question_container">
+				<div class="display">
+					<span class="plus_sign">+</span>
+					<br>
+					<span class="inner_display">Display</span>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+		<div class="form_overall_wrapper" id="step_2">
+			{% if context.Personal %}
+			<span class="form_header">2. Provide Your Information.</span> <span class="form_header status  completed">(Completed)</span>
+			<div class="form_wrapper" id="personal_container">
+				<div class="display">
+					<span class="inner_display completed">Completed</span>
+				</div>
+			</div>
+			{% else %}
+			<span class="form_header">2. Provide Your Information.</span> <span class="form_header status">(Pending)</span>
+			<div class="form_wrapper" id="personal_container">
+				<div class="display">
+					<span>Display</span>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+		<div class="form_overall_wrapper" id="step_3">
+			{% if context.Upload %}
+			<span class="form_header">3. Upload Your Documents.</span> <span class="form_header status completed">(Completed)</span>
+			<div class="form_wrapper" id="upload_container">
+				<div class="display">
+					<span class="inner_display completed">Completed</span>
+				</div>
+			</div>
+			{% else %}
+			<span class="form_header">3. Upload Your Documents.</span> <span class="form_header status">(Pending)</span>
+			<div class="form_wrapper" id="upload_container">
+				<div class="display">
+					<span>Display</span>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+		<div class="display_wrapper" id="display_question">
+			<span class="display_title header">1. Tell Us About Yourself.</span> <span class="status header">(Pending)</span>
+			<img src="{% static 'userLR/exit_v.svg'%}" id="exit">
+			<div class="question_wrapper extra_fields" id="financial_support">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year have you provided more then 50% financial support for anyone?</span>
+				</div>
+			</div>
+			<div class="financial_support dormant extra_question">
+				<label for="question_input" class="information_label input_label_people"># of people</label>
+				<input type="number" name="support_input" class="question_input" placeholder="0" min="1" max="12">
+			</div>
+			<div class="question_wrapper financial_support dormant extra_fields" id="daycare_services">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year have you paid for services such as a daycare provider, to care for one or more children under the age of 13?</span>
+				</div>
+			</div>
+			<div class="daycare_services dormant extra_question">
+				<label for="daycare_input" class="information_label input_label_amount">Amount $</label>
+				<input type="number" name="daycare_input" class="question_input" placeholder="0" min="1">
+			</div>
+			<div class="question_wrapper" id="household">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you pay a household employee at least $2,100 this year?</span>
+				</div>
+			</div>
+			<div class="question_wrapper" id="15000_gift">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you or your spouse make any gifts in excess of $15,000 to any one donee?</span>
+				</div>
+			</div>
+			<div class="question_wrapper" id="250_gift">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year have you gifted something valued $250 or more to any one organization?</span>
+				</div>
+			</div>
+			<div class="question_wrapper extra_fields" id="medical_dental">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you have any medical and/or dental expenses?</span>
+				</div>
+			</div>
+			<div class="medical_dental dormant extra_question extra_select extra_add">
+				<div>
+					<label for="md_select" class="information_label select_label_md">Expense Type:</label>
+					<select name="md_select" class="question_select">
+					  <option value="Medical">Medical</option>
+					  <option value="Dental">Dental</option>
+					</select>
+				</div>
+				<div>
+					<label for="md_input" class="information_label input_label_amount">Amount $</label>
+					<input type="number" name="md_input" class="question_input" placeholder="0" min="1">
+				</div>
+			</div>
+			<div class="medical_dental dormant aRemove">
+				<span class="add_button md_add">New Expense</span>
+			</div>
+			<div class="question_wrapper extra_fields" id="unemployment">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year have you received Unemployment Compensation?</span>
+				</div>
+			</div>
+			<div class="unemployment dormant extra_form fNotification">
+				<span class="form_notification">Upload form 1099-G in Step 3.</span>
+			</div>
+			<div class="question_wrapper extra_fields" id="social_security">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year have you received Social Security Benefits?</span>
+				</div>
+			</div>
+			<div class="social_security dormant extra_form fNotification">
+				<span class="form_notification">Upload form SSA-1099 in Step 3.</span>
+			</div>
+			<div class="question_wrapper" id="residence">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you sell your primary residence?</span>
+				</div>
+			</div>
+			<div class="question_wrapper" id="car-business">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you use your car for business purposes?</span>
+				</div>
+			</div>
+			<div class="question_wrapper" id="non-business">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you sustain any non-business bad debts?</span>
+				</div>
+			</div>
+			<div class="question_wrapper extra_fields" id="gains_loses">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you have any gains or loses in any business/rental/farm assets?</span>
+				</div>
+			</div>
+			<div class="gains_loses dormant extra_question extra_select extra_add">
+				<div>
+					<label for="galo_select" class="information_label select_label_asset">Asset Type:</label>
+					<select name="galo_select" class="question_select">
+					  <option value="Business">Business</option>
+					  <option value="Rental">Rental</option>
+					  <option value="Farm">Farm</option>
+					  <option value="Other">Other</option>
+					</select>
+				</div>
+				<div>
+					<label for="galo_input" class=" information_label input_label_amount">Amount $</label>
+					<input type="number" name="galo_input" class="question_input" placeholder="0" min="1">
+				</div>
+			</div>
+			<div class="gains_loses dormant aRemove">
+				<span class="add_button">New Asset</span>
+			</div>
+			<div class="question_wrapper extra_fields" id="virtual_currency">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you receive, sell, send, exchange, or otherwise acquire any financial interest in any virtual currency?</span>
+				</div>
+			</div>
+			<div class="virtual_currency dormant extra_question extra_select extra_add">
+				<div>
+					<label for="currency_select" class="information_label input_label_currency">Currency Name:</label>
+					<input type="text" name="currency_input" class="question_input" placeholder="Bitcoin" >
+				</div>
+				<div>
+					<label for="currency_input" class="information_label input_label_amount">Amount $</label>
+					<input type="number" name="currency_input" class="question_input" placeholder="0" min="1">
+				</div>
+			</div>
+			<div class="virtual_currency dormant aRemove">
+				<span class="add_button currency_add">New Currency</span>
+			</div>
+			<div class="question_wrapper extra_fields" id="stock_options">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you exercise any stock options?</span>
+				</div>
+			</div>
+			<div class="stock_options dormant extra_form fNotification">
+				<span class="form_notification">Upload form Form 1099-B in Step 3.</span>
+			</div>
+			<div class="question_wrapper extra_fields" id="bonds">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you purchase, sell, or own any bonds you paid more or less than the face amount?</span>
+				</div>
+			</div>
+			<div class="bonds dormant extra_form fNotification">
+				<span class="form_notification">Upload form Form 1099-INT in Step 3.</span>
+			</div>
+			<div class="question_wrapper" id="loan">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year were you the recipient of, or did you make a "below-market" or "interest-free" loan?</span>
+				</div>
+			</div>
+			<div class="question_wrapper" id="pension">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>During the year did you receive any payments from a pension or profit sharing plan?</span>
+				</div>
+			</div>
+			<div class="question_wrapper" id="prev_customer">
+				<div id="Y_N">
+					<span class="Y_N_Buttons">Yes</span>
+					<span class="Y_N_Buttons">No</span>
+				</div>
+				<div>
+					<span>Have we previously prepared your tax returns?</span>
+				</div>
+			</div>
+			<div class="submit_wrapper">
+				<div class="submit_button" id="question_submit">
+					<span>Submit</span>
+				</div>
+			</div>
+		</div>
+		<div class="display_wrapper" id="display_personal">
+			<span class="display_title header">2. Provide Your Information.</span> <span class="status header">(Pending)</span>
+			<img src="{% static 'userLR/exit_v.svg'%}" id="exit">
+			<div class="person_wrapper">
+				<span class="user_Fname">{{ request.user }}</span>
+				<div class="information_flex">
+					<label for="filing_select" class="">Filing Status:</label>
+					<select name="filing_select" class="filing_select">
+					  <option value="Single">Single</option>
+					  <option value="Married Filing Jointly">Married Filing Jointly</option>
+					  <option value="Married Filing Separately">Married Filing Separately</option>
+					  <option value="Head of Household">Head of Household</option>
+					  <option value="Widow(er)">Widow(er)</option>
+					</select>
+					<label for="birthday" class="second_item">Date of Birth:</label>
+					<input type="date" id="birthday" name="birthday">
+				</div>
+				<div class="information_flex">
+					<input type="text" id="street_input" class="address_input" name="address" placeholder="Street Address">
+				</div>
+				<div class="information_flex">
+					<input type="text" id="city_input" class="address_input misc_address" name="address" placeholder="City">
+					<input type="text" id="city_input" class="address_input second_item misc_address" name="address" placeholder="State">
+					<input type="text" id="city_input" class="address_input second_item misc_address" name="address" placeholder="Zip Code">
+				</div>
+				<div class="information_flex">
+				</div>
+			</div>
+			<div class="dependant_wrapper person_wrapper">
+				<span class="user_Fname">Dependant 1</span>
+				<div class="information_flex">
+					<input type="text" id="street_input" class="address_input" name="address" placeholder="Full Name">
+				</div>
+				<div class="information_flex">
+					<label for="birthday">Date of Birth:</label>
+					<input type="date" id="birthday" name="birthday">
+				</div>
+				<div class="information_flex">
+					<input type="text" id="street_input" class="address_input" name="address" placeholder="Street Address">
+				</div>
+				<div class="information_flex">
+					<input type="text" id="city_input" class="address_input misc_address" name="address" placeholder="City">
+					<input type="text" id="city_input" class="address_input second_item misc_address" name="address" placeholder="State">
+					<input type="text" id="city_input" class="address_input second_item misc_address" name="address" placeholder="Zip Code">
+				</div>
+				<div class="information_flex">
+				</div>
+			</div>
+			<div class="abmit_wrapper">
+				<div class="submit_button" id="personal_submit">
+					<span>Submit</span>
+				</div>
+			</div>
+		</div>
+		<div class="display_wrapper" id="display_upload">
+			<span class="display_title header">3. Upload Your Documents.</span> <span class="status header">(Pending)</span>
+			<img src="{% static 'userLR/exit_v.svg'%}" id="exit">
+			<form id="myForm">
+				<input type="file" class="upload_file">
+			</form>
+			<div class="abmit_wrapper">
+				<div class="submit_button" id="upload_submit">
+					<span>Submit</span>
+				</div>
+			</div>
+		</div>
+    </div>
+<script src="{% static 'userLR/portal.js'%}"></script>
+</body>
+</html>

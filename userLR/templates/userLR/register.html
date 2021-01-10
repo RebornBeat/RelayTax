@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'userLR/register_style.css'%}">
+<title>Relay Tax - Portal</title>
+</head>
+<body>
+	<div id="bg_wrapper">
+    </div>
+	<div id="navbar">
+		<div id="navbar_text">
+			<span id="active">Home</span>
+			<span>Services</span>
+			<span>About Us</span>
+			<a href="#">Portal</a>
+		</div>
+	</div>	
+	<div id="alert_container">
+		<span id="alert_message"> Alert </span>
+	</div>
+	<div id="login_container">
+		<h3>Register</h3>
+		<form id="myForm">
+			<br>
+			<div id="names">
+				<label for="fname"></label>
+				<input type="text" id="fname" name="fname" placeholder="First Name" required>
+				<label for="lname"></label><br>
+				<input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+			</div>
+			<label for="email"></label><br>
+			<input type="email" id="email" name="email" placeholder="E-mail" required><br>
+			<label for="password"></label><br>
+			<input type="password" class="password" id="password" name="password" placeholder="Password" required><br>
+			<label for="re_password"></label><br>
+			<input type="password" class="password" id="re_password" name="re_password" placeholder="Re-enter Password" required><br>
+			<div id="show_container">
+				<span id="create">Have an Account?</span>
+				<div id="pass_container">
+					<input type="checkbox" id="checkBox">
+					<span id="show_pass">Show Password</span>
+				</div>
+			</div>
+			<button id="SubmitBtn" type="submit">Enter</button>
+		</form>
+	</div>	
+<script src="{% static 'userLR/register.js'%}"></script>
+</body>
+</html>

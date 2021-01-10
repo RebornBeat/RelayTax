@@ -1,0 +1,286 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+}
+
+#navbar {
+	position: relative;
+	width: 100vw;
+	height: 8%;
+	display: flex;
+	align-items: center;
+	box-shadow: 0px 4px 4px rgba(15, 135, 222, 0.25);
+}
+
+#navbar_text {
+	position: absolute;
+	right: 20%;
+	display: flex;
+	align-items: center;
+}
+
+#navbar_text span{
+	margin-right: 10%;
+	flex-shrink: 0;
+}
+
+#navbar_text a {
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #0F87DE;
+	border-radius: 4px;
+	padding: 4px 20px;
+	margin-right: 2%;
+}
+
+#navbar_text #active {
+	color: #0F87DE;
+	text-decoration: underline;
+}
+
+#top_section {
+	position: relative;
+	height: 32%;
+	width: 100%;
+	display: flex;
+}
+
+#top_left{
+	position: absolute;
+	height: 100%;
+	width: 40%;
+}
+
+#top_title{
+	position: relative;
+	top: 5%;
+	margin-left: 10%;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 3rem;
+	line-height: 84px;
+}
+
+#top_left span:not(#top_title){
+	font-weight: bold;
+	position: relative;
+	margin-left: 11%;
+}
+
+#top_left a{
+	display: block;
+	width: 30%;
+	position: relative;
+	font-weight: bold;
+	background-color: #0F87DE;
+	color: white;
+	margin-left: 30%;
+	margin-top: 8%;
+	border-radius: 4px;
+	padding: 6px 0;
+	text-decoration: none;
+	text-align: center;
+}
+
+#top_right{
+	background: url(top_v.svg) no-repeat;
+	position: absolute;
+	right: 0;
+	height: 100%;
+	width: 70%;
+}
+
+#product_image{
+	background: url(top_right_v.svg) no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 2%;
+	right: 15%;
+	height: 100%;
+	width: 50%;
+	transform: scale(0.9);
+}
+
+#middle_section{
+	border-radius: 4px;
+	position: absolute;
+	border: solid;
+	border-color: #0F87DE;
+	background-color: white;
+	height: 10%;
+	top: 36%;
+	left: 35%;
+	width: 30%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#bottom_section{
+	position: relative;
+	background-color: #0F87DE;
+	height: 60%;
+	width: 100%;
+}
+
+#bottom_container{
+	position: absolute;
+	background-color: white;
+	top: 16%;
+	height: 80%;
+	width: 70%;
+	left: 15%;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	display: flex;
+	justify-content: space-around;
+	border-radius: 4px;
+}
+
+.pricing_container{
+	position: relative;
+	background-color: white;
+	top: 10%;
+	height: 80%;
+	width: 20%;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	border: solid;
+	border-color: #0F87DE;
+	text-align: center;
+	border-radius: 4px;
+	
+}
+
+.pricing_container:nth-child(1){
+	box-shadow: none;
+	border: none;
+	text-align: center;
+	
+}
+
+.title_container {
+	position: relative;
+	height: 25%;
+	
+}
+
+.title_container h4 {
+	position: relative;
+	margin-top: 5%;
+	
+}
+
+.pricing_description{
+	position: relative;
+	top: 1%;
+	
+}
+
+.line {
+	position: relative;
+	width: 100%;
+	margin-top: 1%;
+	border-top: solid;
+	border-color: #0F87DE;
+	
+}
+.line:nth-child(1) {
+	position: relative;
+	margin-top: 40%;
+	width: 100%;
+	border-top: solid;
+	border-color: #0F87DE;
+	
+}
+
+
+
+.check {
+	position: relative;
+	background: url(check_v.svg) no-repeat;
+	width: 20%;
+	height: 7.2%;
+	left: 40%;
+}
+
+.pricing_wrapper {
+	position: relative;
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+.one_liner {
+	margin-top: 6%;
+}
+
+.pricing_wrapper h3 {
+	margin-top: 6%;
+}
+
+.pricing_wrapper div {
+	display: flex;
+}
+
+
+
+.pricing_wrapper span {
+	margin-top: 9%;
+}
+
+.pricing_container a {
+	display: block;
+	width: 50%;
+	position: absolute;
+	font-weight: bold;
+	background-color: #0F87DE;
+	color: white;
+	margin-left: 25%;
+	bottom: 6%;
+	border-radius: 4px;
+	padding: 6px 0;
+	text-decoration: none;
+	text-align: center;
+}
+
+#computer_svg {
+	position: relative;
+	background: url(computer_v.svg) no-repeat;
+	width: 20%;
+	height: 100%;
+	transform: scale(0.6);
+}
+
+#android_svg {
+	position: relative;
+	background: url(android_v.svg) no-repeat;
+	width: 20%;
+	height: 100%;
+	transform: scale(0.6);
+}
+
+#ios_svg {
+	position: relative;
+	background: url(ios_v.svg) no-repeat;
+	width: 20%;
+	height: 100%;
+	transform: scale(0.6);
+}
+
+#tablet_svg {
+	position: relative;
+	background: url(tablet_v.svg) no-repeat;
+	width: 20%;
+	height: 100%;
+	transform: scale(0.6);
+}
