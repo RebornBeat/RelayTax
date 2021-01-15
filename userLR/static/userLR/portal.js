@@ -334,10 +334,11 @@ document.querySelector('#question_submit').addEventListener('click', function() 
 		headers: {"X-CSRFToken": csrftoken},
 		body: JSON.stringify(allDict)
 	})
-	
+	// Change display to completed
 	document.querySelector('#step_1').querySelector('.status').innerHTML = ('(Completed)')
 	document.querySelector('#step_1').querySelector('.status').style.color = 'green'
 	document.querySelector('#required_imports').classList.add('step_1_completed');
+	document.querySelector('#required_imports').style.display = 'none';
 	// Change display to completed
 	alert("Submitted");
 });
@@ -382,11 +383,12 @@ document.querySelector('#personal_submit').addEventListener('click', function() 
 			headers: {"X-CSRFToken": csrftoken},
 			body: JSON.stringify(allDict)
 		})
+		// Change display to completed
 		document.querySelector('#step_2').querySelector('.status').innerHTML = ('(Completed)')
 		document.querySelector('#step_2').querySelector('.status').style.color = 'green'
 		document.querySelector('#required_imports').classList.add('step_2_completed');
 		document.querySelector('#display_personal').style.display = 'none';
-		// Change display to completed
+		
 	}
 	
 });
@@ -400,6 +402,7 @@ document.querySelector('#upload_submit').addEventListener('click', function() {
 				headers: { "X-CSRFToken": csrftoken},
 				body: myFile.files[0]
 			})
+	// Change display to completed
 	document.querySelector('#step_3').querySelector('.status').innerHTML = ('(Completed)')
 	document.querySelector('#step_3').querySelector('.status').style.color = 'green'
 	document.querySelector('#required_imports').classList.add('step_3_completed');
