@@ -299,7 +299,7 @@ document.querySelector('#question_submit').addEventListener('click', function() 
 	for ( let question in allDict) {
 		
 		if ( allDict[question]['Response'] == 'Yes' ) {
-			let questionClasses = document.querySelectorAll(`.${question}`);
+			let questionClasses = document.querySelectorAll(`#${question}`);
 			
 			for ( let ii = 0; ii < questionClasses.length; ii++ ) {
 				let questionInput = questionClasses[ii].getElementsByTagName("INPUT");
