@@ -356,9 +356,8 @@ document.querySelector('#question_submit').addEventListener('click', function() 
 	document.querySelector('#step_1').querySelector('.status').innerHTML = ('(Completed)')
 	document.querySelector('#step_1').querySelector('.status').style.color = 'green'
 	document.querySelector('#required_imports').classList.add('step_1_completed');
-	document.querySelector('#required_imports').style.display = 'none';
+	document.querySelector('#display_question').style.display = 'none';
 	// Change display to completed
-	alert("Submitted");
 });
 
 document.querySelector('#personal_submit').addEventListener('click', function() {
