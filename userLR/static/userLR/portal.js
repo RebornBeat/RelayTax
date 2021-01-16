@@ -2,6 +2,7 @@ const csrftoken = getCookie('csrftoken');
 const yN_Buttons = document.querySelectorAll('.Y_N_Buttons');
 var aButtons = document.querySelectorAll('.add_button');
 var rButtons = document.querySelectorAll('.remove_button');
+var aForms = document.querySelectorAll('.form_overall_wrapper');
 
 function getCookie(name) {
     let cookieValue = null;
@@ -17,6 +18,18 @@ function getCookie(name) {
         }
     }
     return cookieValue;
+}
+
+function hideForms () {
+	for ( let i = 0; i < aForms.length; i++) {
+		aForms[i].style.display = 'none';
+	}
+}
+
+function showForms () {
+	for ( let i = 0; i < aForms.length; i++) {
+		aForms[i].style.display = 'block';
+	}
 }
 
 function addFor () {
@@ -128,6 +141,9 @@ function removeFor () {
 
 for ( let i = 0; i < 3; i++) {
 	document.querySelectorAll('.form_wrapper')[i].addEventListener('click', function() {
+		
+		hideForms ()
+		
 		let current_wrapper = this.getAttribute('id')
 		
 		if (current_wrapper == "question_container" ) {
@@ -166,6 +182,7 @@ for ( let i = 0; i < 3; i++) {
 for ( let i = 0; i < 3; i++) {
 	document.querySelectorAll('#exit')[i].addEventListener('click', function() {
 		this.parentElement.style.display = 'none'
+		showForms ()
 	});
 }
 
@@ -357,7 +374,7 @@ document.querySelector('#question_submit').addEventListener('click', function() 
 	document.querySelector('#step_1').querySelector('.status').style.color = 'green'
 	document.querySelector('#required_imports').classList.add('step_1_completed');
 	document.querySelector('#display_question').style.display = 'none';
-	// Change display to completed
+	showForms ()
 });
 
 document.querySelector('#personal_submit').addEventListener('click', function() {
@@ -405,7 +422,7 @@ document.querySelector('#personal_submit').addEventListener('click', function() 
 		document.querySelector('#step_2').querySelector('.status').style.color = 'green'
 		document.querySelector('#required_imports').classList.add('step_2_completed');
 		document.querySelector('#display_personal').style.display = 'none';
-		
+		showForms ()
 	}
 	
 });
@@ -419,11 +436,13 @@ document.querySelector('#upload_submit').addEventListener('click', function() {
 				headers: { "X-CSRFToken": csrftoken},
 				body: myFile.files[0]
 			})
-	// Change display to completed
-	document.querySelector('#step_3').querySelector('.status').innerHTML = ('(Completed)')
-	document.querySelector('#step_3').querySelector('.status').style.color = 'green'
-	document.querySelector('#required_imports').classList.add('step_3_completed');
-	document.querySelector('#display_upload').style.display = 'none';
+			
+		// Change display to completed
+		document.querySelector('#step_3').querySelector('.status').innerHTML = ('(Completed)')
+		document.querySelector('#step_3').querySelector('.status').style.color = 'green'
+		document.querySelector('#required_imports').classList.add('step_3_completed');
+		document.querySelector('#display_upload').style.display = 'none';
+		showForms ()
 	}
 	
 });
