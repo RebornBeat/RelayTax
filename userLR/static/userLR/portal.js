@@ -239,29 +239,33 @@ for ( let i = 0; i < yN_Buttons.length; i++) {
 	});
 }
 
-if ( document.querySelector('#dependants_import_value') != null ) {
-	let dependantsValue = parseInt( document.querySelector('#dependants_import_value').innerHTML )
-	let dependentWrapper = document.querySelectorAll('.dependant_wrapper');
+function checkDependants () {
+	if ( document.querySelector('#dependants_import_value') != null ) {
+		if ( document.querySelector('#dependants_import_value').innerHTML != 0 ){
+			let dependantsValue = parseInt( document.querySelector('#dependants_import_value').innerHTML )
+			let dependentWrapper = document.querySelectorAll('.dependant_wrapper');
 
-	for ( let i = 0; i < dependantsValue; i++ ) {
-		
-		if ( i != 0 ) {
-			let dependentDiv = dependentWrapper[0].cloneNode(true);
-			dependentWrapper[0].parentNode.insertBefore(dependentDiv, dependentWrapper[dependentWrapper.length - 1].nextElementSibling)
+			for ( let i = 0; i < dependantsValue; i++ ) {
+				
+				if ( i != 0 ) {
+					let dependentDiv = dependentWrapper[0].cloneNode(true);
+					dependentWrapper[0].parentNode.insertBefore(dependentDiv, dependentWrapper[dependentWrapper.length - 1].nextElementSibling)
+					dependentWrapper = document.querySelectorAll('.dependant_wrapper');
+					dependentWrapper[dependentWrapper.length - 1].querySelector('.user_Fname').innerHTML = `Dependant ${i + 1}`
+				} else {
+					document.querySelector('.abmit_wrapper').style.position = 'relative';
+					document.querySelector('.abmit_wrapper').style.bottom = '';
+					document.querySelector('.abmit_wrapper').style.marginTop = '2%';
+				}
+				
+			}
+			
 			dependentWrapper = document.querySelectorAll('.dependant_wrapper');
-			dependentWrapper[dependentWrapper.length - 1].querySelector('.user_Fname').innerHTML = `Dependant ${i + 1}`
-		} else {
-			document.querySelector('.abmit_wrapper').style.position = 'relative';
-			document.querySelector('.abmit_wrapper').style.bottom = '';
-			document.querySelector('.abmit_wrapper').style.marginTop = '2%';
+			
+			for ( let i = 0; i < dependentWrapper.length; i++ ) {
+				dependentWrapper[i].style.display = 'block';
+			}
 		}
-		
-	}
-	
-	dependentWrapper = document.querySelectorAll('.dependant_wrapper');
-	
-	for ( let i = 0; i < dependentWrapper.length; i++ ) {
-		dependentWrapper[i].style.display = 'block';
 	}
 }
 
@@ -356,7 +360,11 @@ document.querySelector('#question_submit').addEventListener('click', function() 
 				}
 				
 				if ( entries.length != 0 ) {
-				allDict[question]['Entries'].push( entries )
+					allDict[question]['Entries'].push( entries )
+					if ( question == "financial_support" ){	
+						document.querySelector('#dependants_import_value').innerHTML = entries[0]
+						console.log(allDict[question], question, entries[0])
+					}
 				}
 				
 			}
@@ -374,8 +382,10 @@ document.querySelector('#question_submit').addEventListener('click', function() 
 	// Change display to completed
 	document.querySelector('#step_1').querySelector('.status').innerHTML = ('(Completed)')
 	document.querySelector('#step_1').querySelector('.status').style.color = 'green'
+	document.querySelector('#step_1').querySelector('.status').classList.add("completed");
 	document.querySelector('#required_imports').classList.add('step_1_completed');
 	document.querySelector('#display_question').style.display = 'none';
+	checkDependants ()
 	showForms ()
 });
 
@@ -422,6 +432,7 @@ document.querySelector('#personal_submit').addEventListener('click', function() 
 		// Change display to completed
 		document.querySelector('#step_2').querySelector('.status').innerHTML = ('(Completed)')
 		document.querySelector('#step_2').querySelector('.status').style.color = 'green'
+		document.querySelector('#step_2').querySelector('.status').classList.add("completed");
 		document.querySelector('#required_imports').classList.add('step_2_completed');
 		document.querySelector('#display_personal').style.display = 'none';
 		showForms ()
@@ -442,6 +453,7 @@ document.querySelector('#upload_submit').addEventListener('click', function() {
 		// Change display to completed
 		document.querySelector('#step_3').querySelector('.status').innerHTML = ('(Completed)')
 		document.querySelector('#step_3').querySelector('.status').style.color = 'green'
+		document.querySelector('#step_3').querySelector('.status').classList.add("completed");
 		document.querySelector('#required_imports').classList.add('step_3_completed');
 		document.querySelector('#display_upload').style.display = 'none';
 		showForms ()
@@ -450,3 +462,4 @@ document.querySelector('#upload_submit').addEventListener('click', function() {
 });
 
 addFor ()
+checkDependants ()
