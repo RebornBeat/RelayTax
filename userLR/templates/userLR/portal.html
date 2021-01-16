@@ -10,12 +10,11 @@
 		{% if context.Question %}
 			<div id="questions_import">
 				<div id="dependants_import">{{ context.Question.financial_support|nested_value:'Response' }}</div>
-				{% for i in context.Question.financial_support|nested_value:'Entries' %}
-					<div id="dependants_import_value">{{ i|int_value }}</div>
-				{% endfor %}
-				{% for i in context.Question.medical_dental|nested_value:'Entries' %}
-					<div class={{ i|string_value }} id="dental_import_value">{{ i|int_value }}</div>
-				{% endfor %}
+				{% if context.Question.financial_support|nested_value:'Response' == "Yes" %}
+					{% for i in context.Question.financial_support|nested_value:'Entries' %}
+						<div id="dependants_import_value">{{ i|int_value }}</div>
+					{% endfor %}
+				{% endif %}
 			</div>
 		{% endif %}
 		{% if context.Personal %}
@@ -153,7 +152,7 @@
 					<span>During the year did you pay a household employee at least $2,100 this year?</span>
 				</div>
 			</div>
-			<div class="question_wrapper" id="15000_gift">
+			<div class="question_wrapper" id="spouse_gift">
 				<div id="Y_N">
 					<span class="Y_N_Buttons">Yes</span>
 					<span class="Y_N_Buttons">No</span>
@@ -162,7 +161,7 @@
 					<span>During the year did you or your spouse make any gifts in excess of $15,000 to any one donee?</span>
 				</div>
 			</div>
-			<div class="question_wrapper" id="250_gift">
+			<div class="question_wrapper" id="a_gift">
 				<div id="Y_N">
 					<span class="Y_N_Buttons">Yes</span>
 					<span class="Y_N_Buttons">No</span>
@@ -266,7 +265,7 @@
 					  <option value="Other">Other</option>
 					</select>
 				</div>
-				<div>
+				<div id="div_input">
 					<label for="galo_input" class=" information_label input_label_amount">Amount $</label>
 					<input type="number" name="galo_input" class="question_input" placeholder="0" min="1">
 				</div>
@@ -284,11 +283,11 @@
 				</div>
 			</div>
 			<div class="virtual_currency dormant extra_question extra_select extra_add">
-				<div>
+				<div id="div_input"> 
 					<label for="currency_select" class="information_label input_label_currency">Currency Name:</label>
 					<input type="text" name="currency_input" class="question_input" placeholder="Bitcoin" >
 				</div>
-				<div>
+				<div id="div_input">
 					<label for="currency_input" class="information_label input_label_amount">Amount $</label>
 					<input type="number" name="currency_input" class="question_input" placeholder="0" min="1">
 				</div>

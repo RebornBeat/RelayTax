@@ -249,7 +249,7 @@ if ( document.querySelector('#dependants_import_value') != null ) {
 document.querySelector('#question_submit').addEventListener('click', function() {
 	let allDict = {};
 	let allQuestions = document.querySelectorAll('.question_wrapper');
-	let allInputs = document.getElementsByTagName("INPUT");
+	let allInputs = document.getElementById("display_question").getElementsByTagName("INPUT");
 	
 	function getResponse (x) {
 		let questionID = x.getAttribute('id');
@@ -285,14 +285,32 @@ document.querySelector('#question_submit').addEventListener('click', function() 
 		}
 	}
 	
+	let activeReturned = false
+	
 	// Check if all active inputs are not blank
 	for ( let ii = 0; ii < allInputs.length; ii++) {
+		console.log( "value :", allInputs[ii].value, "name :", allInputs[ii].getAttribute('name'), "parentID :", allInputs[ii].parentElement.getAttribute('id'))
 		if ( allInputs[ii].parentElement.classList.contains('active') == true ) {
 			if ( allInputs[ii].value  == '' ) {
 				alert("Please Complete All Fields");
+				activeReturned = true
 				return
 			}
 		}
+		
+		if ( allInputs[ii].parentElement.getAttribute('id') == "div_input" ){
+			if ( allInputs[ii].parentElement.parentElement.classList.contains('active') == true ) {
+				if ( allInputs[ii].value  == '' ) {
+					alert("Please Complete All Fields");
+					activeReturned = true
+					return
+				}
+			}
+		}
+	}
+	
+	if ( activeReturned == true ){
+		return
 	}
 	
 	// Store inputs and selections for all questions with a responce of yes
