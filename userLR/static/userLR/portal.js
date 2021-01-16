@@ -142,7 +142,9 @@ function removeFor () {
 for ( let i = 0; i < 3; i++) {
 	document.querySelectorAll('.form_wrapper')[i].addEventListener('click', function() {
 		
-		hideForms ()
+		if ( aForms[i].querySelector(`.status`).classList.contains('completed') == false ) {
+			hideForms ()
+		}
 		
 		let current_wrapper = this.getAttribute('id')
 		
@@ -334,7 +336,7 @@ document.querySelector('#question_submit').addEventListener('click', function() 
 	for ( let question in allDict) {
 		
 		if ( allDict[question]['Response'] == 'Yes' ) {
-			let questionClasses = document.querySelectorAll(`#${question}`);
+			let questionClasses = document.querySelectorAll(`.${question}`);
 			
 			for ( let ii = 0; ii < questionClasses.length; ii++ ) {
 				let questionInput = questionClasses[ii].getElementsByTagName("INPUT");

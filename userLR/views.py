@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.http import JsonResponse
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -73,6 +74,7 @@ def portal_login(request):
 def portal_register(request):
     return render(request, 'userLR/register.html')
 
+@csrf_exempt
 def login_user(request):
     if request.method =="POST":
         new_request = json.loads(request.body.decode('utf-8'))
@@ -89,6 +91,7 @@ def login_user(request):
         else:
             return JsonResponse({'details': "pass_failed"})
         
+@csrf_exempt
 def register_user(request):
     if request.method =="POST":
         new_request = json.loads(request.body.decode('utf-8'))
