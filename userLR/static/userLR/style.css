@@ -53,15 +53,18 @@ body {
 }
 
 #top_left{
-	position: absolute;
 	height: 100%;
 	width: 40%;
+	padding-left: 8%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
 }
+
 
 #top_title{
 	position: relative;
-	top: 5%;
-	margin-left: 10%;
 	font-family: Roboto;
 	font-style: normal;
 	font-weight: bold;
@@ -70,9 +73,9 @@ body {
 }
 
 #top_left span:not(#top_title){
+	margin-top: -8%;
 	font-weight: bold;
 	position: relative;
-	margin-left: 11%;
 }
 
 #top_left a{
@@ -82,8 +85,7 @@ body {
 	font-weight: bold;
 	background-color: #0F87DE;
 	color: white;
-	margin-left: 30%;
-	margin-top: 8%;
+	top: -8%;
 	border-radius: 4px;
 	padding: 6px 0;
 	text-decoration: none;
@@ -92,20 +94,21 @@ body {
 
 #top_right{
 	background: url(top_v.svg) no-repeat;
-	position: absolute;
-	right: 0;
 	height: 100%;
-	width: 70%;
+	width: 60%;
+	background-size: 100%;
+    background-position: right center;
+	
 }
 
 #product_image{
 	background: url(top_right_v.svg) no-repeat;
-	background-size: cover;
+	background-size: contain;
 	position: absolute;
 	top: 2%;
-	right: 15%;
+	right: 5%;
 	height: 100%;
-	width: 50%;
+	width: 30%;
 	transform: scale(0.9);
 }
 
@@ -116,7 +119,7 @@ body {
 	border-color: #0F87DE;
 	background-color: white;
 	height: 10%;
-	top: 36%;
+	top: 35%;
 	left: 35%;
 	width: 30%;
 	display: flex;
