@@ -40,27 +40,14 @@ body {
 
 #navbar_text {
     position: absolute;
-	width: 45%;
+	width: 25%;
 	height: 100%;
-    right: 10%;
+    right: 5%;
 	display: flex;
+	justify-content: flex-end;
 	align-items: center;
 }
 
-#navbar_text a {
-	margin-right: 20px;
-	flex-shrink: 0;
-	text-decoration: none;
-	color: black;
-}
-
-#navbar_text a:hover {
-	color: #0f87de;
-}
-
-#navbar_text a:nth-child(3) {
-	margin-right: 30px;
-}
 
 #navbar_text img {
 	width: 10%;
@@ -76,11 +63,6 @@ body {
 	margin-left: 2%;
 }
 
-#navbar_text #active {
-	color: #0f87de;
-	text-decoration: underline;
-}
-
 #refund_container {
 	position: relative;
 	top: 3%;
@@ -89,10 +71,11 @@ body {
 	left: 15%;
 	display: flex;
 	align-items: center;
+	justify-content: space-around;	
 }
 
 .refund_wrapper {
-	position: absolute;
+	position: relative;
 	height: 80%;
 	width: 35%;
 	background: #FFFFFF;
@@ -100,20 +83,12 @@ body {
 	border-color: #0f87de;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
-.refund_wrapper:nth-child(1) {
-	left: 12%;
-}
-
-.refund_wrapper:nth-child(2) {
-	right: 12%;
-}
-
-.refund_wrapper h1 {
-	position: relative;
-	top: 20%;
-}
 
 #refund_dates_container {
 	position: relative;
@@ -168,14 +143,15 @@ body {
 	background: #FFFFFF;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
 .form_overall_wrapper {
-	position: relative;
 	width: 80%;
-	left: 10%;
 	height: 22.5%;
-	margin-top: 4%;
 }
 
 .status {
@@ -187,7 +163,6 @@ body {
 }
 
 .form_wrapper {
-	position: relative;
 	width: 100%;
 	height: 80%;
 	background: #FFFFFF;
@@ -515,4 +490,112 @@ body {
 	  top: 50%;
 	  left: 50%;
 	  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 709px) and (min-device-width: 0px){
+	
+	.refund_wrapper {
+		width: 45%;
+	}
+	
+}
+
+@media only screen and (max-width: 394px) and (min-device-width: 0px){	
+	
+	.refund_wrapper h1{
+		font-size: 1.3rem;
+	}
+	
+	.form_header {
+		font-size: 0.8rem;
+	}
+	
+	.date_wrapper {
+		width: 35%;
+	}
+	
+}
+
+@media only screen and (max-width: 900px) and (min-device-width: 795px){	
+	
+	#refund_dates_container{
+		left: 15%;
+	}
+
+	#form_container{
+		width: 90%;
+		left: 5%;
+	}
+	
+	
+}
+
+@media only screen and (max-width: 795px) and (min-device-width: 0px){	
+	
+	#refund_dates_container{
+		left: 17.5%;
+	}
+
+	#form_container{
+		width: 95%;
+		left: 2.5%;
+	}
+	
+	#exit {
+		height: 4%;
+	}
+	
+	
+}
+
+@media only screen and (max-width: 740px) and (min-device-width: 605px){	
+	
+	.question_wrapper{
+		font-size: 0.9rem;
+	}
+	
+	#Y_N {
+		left: 1%;
+	}
+}
+
+@media only screen and (max-width: 605px) and (min-device-width: 565px){	
+	
+	.question_wrapper{
+		font-size: 0.8rem;
+	}
+	
+	#Y_N {
+		left: 1%;
+	}
+}
+
+@media only screen and (max-width: 565px) and (min-device-width: 390px){	
+	
+	.question_wrapper{
+		font-size: 0.7rem;
+	}
+	
+	#Y_N {
+		left: 1%;
+	}
+	
+	.question_wrapper div:nth-child(2) {
+		width: 70%;
+	}
+}
+
+@media only screen and (max-width: 390px) and (min-device-width: 0px){	
+	
+	.question_wrapper{
+		font-size: 0.6rem;
+	}
+	
+	#Y_N {
+		left: 1%;
+	}
+	
+	.question_wrapper div:nth-child(2) {
+		width: 60%;
+	}
 }

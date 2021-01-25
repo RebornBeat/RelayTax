@@ -2,6 +2,7 @@
 <head>
 {% load static %}
 {% load app_extras %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{% static 'userLR/portal_style.css'%}">
 <title>Relay Tax - Portal</title>
 </head>
@@ -32,9 +33,6 @@
     </div>
 	<div id="navbar">
 		<div id="navbar_text">
-			<a href="http://127.0.0.1:8000/">Home</a>
-			<a href="services/">Services</a>
-			<a href="about-us/">About Us</a>
 			<img src="{% static 'userLR/profile.png'%}">
 			<span>{{ request.user }}</span>
 		</div>
