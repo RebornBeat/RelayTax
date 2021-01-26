@@ -318,9 +318,6 @@ body {
 	cursor: pointer;
 }
 
-.remove_button {
-}
-
 .add_button {
 	width: 25%;
 	right: 0;
@@ -343,7 +340,7 @@ body {
 
 .submit_wrapper {
 	position: relative;
-	left: 89%;
+	left: 87.5%;
 	width: 10%;
 	height: 10%;
 	margin-top: 2%;
@@ -351,7 +348,7 @@ body {
 
 .abmit_wrapper {
 	position: absolute;
-	left: 89%;
+	left: 87.5%;
 	width: 10%;
 	height: 10%;
 	bottom: 0;
