@@ -215,6 +215,7 @@ body {
 	position: relative;
 	margin-top: 3%;
 	display: flex;
+	justify-content: space-evenly;
 	height: 15%;
 	width: 100%;
 }
@@ -223,7 +224,6 @@ body {
 	position: relative;
 	width: 15%;
 	height: 100%;
-	left: 4%;
 	display: flex;
 	align-items: center;
 }
@@ -231,8 +231,11 @@ body {
 #Y_N span{
 	position: relative;
 	height: 50%;
-	padding: 2px 16px;
+	width: 50%;
 	border: solid;
+	display: flex;
+	align-items:center;
+	justify-content: center;
 	border-color: #0f87de;
 	border-width: 2px;
 	border-right: none;
@@ -250,9 +253,8 @@ body {
 }
 
 .question_wrapper div:nth-child(2) {
-	position: absolute;
+	position: relative;
 	height: 100%;
-	right: 1%;
 	width: 78%;
 	display: flex;
 	align-items: center;
@@ -267,95 +269,48 @@ body {
 	margin-right: 2%;
 }
 
-.extra_question:not(.extra_select) {
+.extra_wrapper {
 	position: relative;
-	width: 20%;
-	height: 7%;
-	left: 79%;
-	margin-top: 2%;
+	width: 45%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
 
-.extra_select {
+.input_select {
+	width: 50%;
+	height: 100%;
+	border: solid;
+	text-align: center;
+	border-color: red;
+}
+
+.extra_question {
 	position: relative;
-	width: 52%;
+	width: 80%;
 	height: 7%;
-	left: 47%;
+	left: 17.5%;
 	margin-top: 2%;
+	display: flex;
+	justify-content: flex-end;
 }
 
-.extra_select div:nth-child(1){
-	position: absolute;
-	width: 39%;
-	height: 100%;
-	top: 0;
-	left: 1%;
-}
-
-.extra_select div:nth-child(2){
-	position: absolute;
-	width: 39%;
-	height: 100%;
-	top: 0;
-	right: 0;
-}
 
 .dormant {
 	display: none;
 }
 
 .information_label {
-	position: absolute;
-	display: block;
-	top: 12%;
-	left: -50%;
-}
-
-.input_label_amount {
-	left: -45%;
-}
-
-.input_label_currency {
-	left: -68.5%;
-}
-
-
-.select_label_asset {
-	left: -52%;
-}
-
-.select_label_md {
-	left: -62.5%;
-}
-
-.question_input {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	right: 0;
-	border: solid;
-	text-align: center;
-	border-color: red;
-	
-}
-
-.question_select {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	right: 0;
-	border: solid;
-	text-align: center;
-	border-color: red;
-	
+	margin-right: 4%;
 }
 
 .aRemove {
 	position: relative;
-	left: 81%;
-	width: 18%;
-	margin-top: 1%;
+	width: 78%;
+	left: 19.5%;
+	align-items: center;
+	justify-content: flex-end;
+	top: 2%;
 	color: #0f87de;
 }
 
@@ -364,35 +319,25 @@ body {
 }
 
 .remove_button {
-	position: absolute;
-	right: 0;
 }
 
 .add_button {
-	width: 50%;
-	position: absolute;
+	width: 25%;
 	right: 0;
 	text-align: right;
 }
 
-.currency_add {
-	width: 65%;
-}
-
-.md_add {
-	width: 65%;
-}
 
 .fNotification {
 	position: relative;
-	left: 59%;
-	width: 40%;
-	margin-top: 1%;
+	left: 27.5%;
+	width: 70%;
+	top: 3%;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 .form_notification {
-	position: absolute;
-	right: 0;
 	color: red;
 }
 
@@ -550,52 +495,69 @@ body {
 
 @media only screen and (max-width: 740px) and (min-device-width: 605px){	
 	
-	.question_wrapper{
+	#display_question{
 		font-size: 0.9rem;
 	}
 	
-	#Y_N {
-		left: 1%;
+	.input_select {
+		font-size: 0.9rem;
 	}
+
 }
 
 @media only screen and (max-width: 605px) and (min-device-width: 565px){	
 	
-	.question_wrapper{
+	#display_question{
 		font-size: 0.8rem;
 	}
 	
-	#Y_N {
-		left: 1%;
+	.input_select {
+		font-size: 0.8rem;
 	}
 }
 
 @media only screen and (max-width: 565px) and (min-device-width: 390px){	
 	
-	.question_wrapper{
+	#display_question{
 		font-size: 0.7rem;
 	}
 	
-	#Y_N {
-		left: 1%;
+	.input_select {
+		font-size: 0.7rem;
+		width: 45%;
 	}
 	
-	.question_wrapper div:nth-child(2) {
-		width: 70%;
+	.extra_question{
+		width: 90%;	
+		left: 7.5%;
 	}
+	
+	
 }
 
 @media only screen and (max-width: 390px) and (min-device-width: 0px){	
 	
-	.question_wrapper{
+	#display_question{
 		font-size: 0.6rem;
 	}
 	
-	#Y_N {
-		left: 1%;
+	.input_select {
+		font-size: 0.5rem;
+		width: 45%;
 	}
 	
-	.question_wrapper div:nth-child(2) {
-		width: 60%;
+	.extra_question{
+		width: 90%;	
+		left: 7.5%;
 	}
+	
+	
+}
+
+@media only screen and (max-width: 786px) and (min-device-width: 0px){	
+
+	.information_label{
+		left: 45%;
+	}
+	
 }

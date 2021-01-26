@@ -127,8 +127,10 @@
 				</div>
 			</div>
 			<div class="financial_support dormant extra_question">
-				<label for="question_input" class="information_label input_label_people"># of people</label>
-				<input type="number" name="support_input" class="question_input" placeholder="0" min="1" max="12">
+				<div class="extra_wrapper"> 
+					<label for="question_input" class="information_label input_label_people"># of people</label>
+					<input type="number" name="support_input" class="question_input input_select" placeholder="0" min="1" max="12">
+				</div>
 			</div>
 			<div class="question_wrapper financial_support dormant extra_fields" id="daycare_services">
 				<div id="Y_N">
@@ -140,8 +142,10 @@
 				</div>
 			</div>
 			<div class="daycare_services dormant extra_question">
-				<label for="daycare_input" class="information_label input_label_amount">Amount $</label>
-				<input type="number" name="daycare_input" class="question_input" placeholder="0" min="1">
+				<div class="extra_wrapper"> 
+					<label for="daycare_input" class="information_label input_label_amount">Amount $</label>
+					<input type="number" name="daycare_input" class="question_input input_select" placeholder="0" min="1">
+				</div>
 			</div>
 			<div class="question_wrapper" id="household">
 				<div id="Y_N">
@@ -180,16 +184,16 @@
 				</div>
 			</div>
 			<div class="medical_dental dormant extra_question extra_select extra_add">
-				<div>
+				<div class="extra_wrapper">
 					<label for="md_select" class="information_label select_label_md">Expense Type:</label>
-					<select name="md_select" class="question_select">
+					<select name="md_select" class="question_select input_select">
 					  <option value="Medical">Medical</option>
 					  <option value="Dental">Dental</option>
 					</select>
 				</div>
-				<div>
+				<div class="extra_wrapper">
 					<label for="md_input" class="information_label input_label_amount">Amount $</label>
-					<input type="number" name="md_input" class="question_input" placeholder="0" min="1">
+					<input type="number" name="md_input" class="question_input input_select" placeholder="0" min="1">
 				</div>
 			</div>
 			<div class="medical_dental dormant aRemove">
@@ -256,18 +260,18 @@
 				</div>
 			</div>
 			<div class="gains_loses dormant extra_question extra_select extra_add">
-				<div>
+				<div class="extra_wrapper"> 
 					<label for="galo_select" class="information_label select_label_asset">Asset Type:</label>
-					<select name="galo_select" class="question_select">
+					<select name="galo_select" class="question_select input_select">
 					  <option value="Business">Business</option>
 					  <option value="Rental">Rental</option>
 					  <option value="Farm">Farm</option>
 					  <option value="Other">Other</option>
 					</select>
 				</div>
-				<div id="div_input">
+				<div class="extra_wrapper" id="div_input">
 					<label for="galo_input" class=" information_label input_label_amount">Amount $</label>
-					<input type="number" name="galo_input" class="question_input" placeholder="0" min="1">
+					<input type="number" name="galo_input" class="question_input input_select" placeholder="0" min="1">
 				</div>
 			</div>
 			<div class="gains_loses dormant aRemove">
@@ -283,13 +287,13 @@
 				</div>
 			</div>
 			<div class="virtual_currency dormant extra_question extra_select extra_add">
-				<div id="div_input"> 
+				<div class="extra_wrapper"  id="div_input"> 
 					<label for="currency_select" class="information_label input_label_currency">Currency Name:</label>
-					<input type="text" name="currency_input" class="question_input" placeholder="Bitcoin" >
+					<input type="text" name="currency_input" class="question_input input_select" placeholder="Bitcoin" >
 				</div>
-				<div id="div_input">
+				<div class="extra_wrapper"  id="div_input">
 					<label for="currency_input" class="information_label input_label_amount">Amount $</label>
-					<input type="number" name="currency_input" class="question_input" placeholder="0" min="1">
+					<input type="number" name="currency_input" class="question_input input_select" placeholder="0" min="1">
 				</div>
 			</div>
 			<div class="virtual_currency dormant aRemove">
