@@ -133,9 +133,12 @@ input:not([type=checkbox]) {
 }
 
 #pass_container {
-	position: absolute;
-	right: 2%;
-	width: 50%;
+	position: relative;
+	width: 80%;
+	left: 10%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
 
 button {
